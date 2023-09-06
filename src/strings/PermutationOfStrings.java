@@ -6,23 +6,24 @@ public class PermutationOfStrings {
     Given two strings s1 and s2, return true if s2 contains a permutation of s1,
     or false otherwise.
     In other words, return true if one of s1's permutations is the substring of s2.
-    * */
-    //eg str="bcdcbaba", pattern="abc"
-    /*sudo code:
-    * Function ifAnagramPresentInString(str, pattern):
-    If str is null or empty or pattern is null or empty:
-        Return false
+    Solution:
+    - We create a map of frequency of characters present in pattern
+    - Now we start from 1st index & if that character present in map,
+     then we decrease the frequency by 1 & we check if the frequency now becomes 0,
+     then we increase the matchedElement variable by 1
+    - If matchedElement becomes equal to size of map or unique characters in pattern
+      then we've found our anagram
+      & we return true
+    - Now if any element is moving out of window, we check if it's
+      part of map, then increase the frequency by 1 & if the frequency is 0
+      then decrease the matchedElement by 1
+    - At last, if there's no match found, then we return false
 
-    use a hashmap: put all the elements in the  pattern to the hashmap:
-    * 1. if element is in the map:
-    *     -decrease the frequency of the element in the map
-    *     -increase matched element if frequency is greater than or equal to 0
-    *     -increase matched element if frequency is greater than or equal to 0
-    * 2. when shrinking the window ie removing element from the window:
-    *    -increase the frequency of the element in the map
-    *    -increase the start
-    *    -decreased the matched element.(ie element at start ==0)
-*/
+    Time Complexity: O(n + m)
+    Space Complexity: O(m)
+    * */
+
+
     public static boolean isAnagramPattern(String str, String pattern){
         if(str.length() == 0 || str == null || pattern == null || pattern.length()==0){
             return false;

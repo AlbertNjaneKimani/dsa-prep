@@ -4,38 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LongestLengthOfKDistinctCharcters2 {
-    /*sudo code: Function longestLength(str, K):
-    If str is null or empty or str's length is less than K:
-        Return 0
+    /*
+    Solution:
+        - We take a Map, which'll give me info about unique characters present, Map key will be character & value will be the occurrence of that character
+        - We'll take a max_length variable, where we'll store the solution
+        - we'll take two variable start & end, which'll point to 1st character in string initially
+        - Now we iterate the string & keep on putting character in map. If size of value is greater than K, then we decrease the character from start index. If occurrence becomes 0, we remove from map.
+        - max_length will be updated by end - start + 1
+        - At last we return, max_length as answer
 
-    Initialize maxLength to 0
-    Initialize start and end pointers to 0
-    Initialize an empty HashMap called map to track characters and their counts
-
-    While end < length(str):
-        currentChar = str[end]
-
-        Add currentChar to map or increment its count
-
-        While the number of distinct characters in map is greater than K:
-            startChar = str[start]
-            Decrement the count of startChar in map
-            If the count becomes 0, remove startChar from map
-            Increment start pointer by 1
-
-        Calculate currentLength as (end - start + 1)
-
-        Update maxLength to max of (maxLength, currentLength)
-
-        Increment end pointer by 1
-
-    Return maxLength
-
-Main:
-    Initialize str as the input string
-    Initialize K as the maximum number of distinct characters allowed
-    Call longestLength(str, K) and store the result in res
-    Print res*/
+        Time Complexity: O(n)
+        Space Complexity: O(n)
+    * */
     public static int longestLength(String str, int K) {
         if (str == null || str.length() == 0 || str.length()< K){
             return 0;

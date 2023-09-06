@@ -3,6 +3,22 @@ package strings;
 import java.util.*;
 
 public class SmallestSubstringWithAllPatternCharacters {
+    /*
+    Solution:
+        - We create a map of frequency of characters present in pattern
+        - Now we start from 1st index & if that character present in map,
+          then we decrease the frequency by 1 & we check if the frequency is greater than 0,
+          then we increase the matchedElement variable by 1
+        - If matchedElement becomes equal to size of pattern then we've found our anagram
+          & we store minimum length & starting point at this moment
+        - Now we increase start & go until matchedElement is equal to pattern size.
+          At every moment we update the starting point & min length if end - start + 1 is less than minLength
+        - Now if any element is moving out of window, we check if it's part of map,
+          then increase the frequency by 1 & if the frequency is 0 then decrease the matchedElement by 1
+        - At last, we return substring starting from subStringStartIndex to subStringStartIndex + minLength
+        Time Complexity: O(n + m)
+        Space Complexity: O(m)
+    * */
     public static String findSmallestLength(String str, String pattern) {
         if (str.length() == 0 || str == null || pattern.length() == 0 || pattern == null) {
             return "";

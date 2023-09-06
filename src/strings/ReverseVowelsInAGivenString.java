@@ -3,9 +3,17 @@ package strings;
 public class ReverseVowelsInAGivenString {
     // str ="equation"
     //output=""
-    // use two pointers start and end. loop through the string using two pointers checking
-    // if start and end are vowels. if they are vowels, swap them. after swapping, increase
-    // the start and decrease the end while(start < end)
+    /*
+    Solution: Using swapping
+        - We take two variable start = 0 & end = n - 1
+        - We iterate element from 'start' until we find a vowel,
+          similarly we iterate from 'end' until we find a vowel
+        - Now we swap the value
+        - We do this until start is less than end
+
+        Time Complexity: O(n), where n is number of characters in String
+        Space Complexity: O(1)
+    * */
     public static String reverseVowels(String str){
         int start =0 ;
         int end = str.length() -1;

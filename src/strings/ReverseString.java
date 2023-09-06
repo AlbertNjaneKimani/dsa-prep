@@ -1,45 +1,87 @@
 package strings;
-
+import java.util.Stack;
 public class ReverseString {
-    /*sudo code:
-    * Function reverseString(str):
-    Initialize start to 0
-    Initialize end to length(str) - 1
-    Convert str to a character array ch
+    public String reverseStringAnother(String str) {
+        String s = "";
 
-    While start < end:
-        // Swap characters at start and end positions
-        temp = ch[start]
-        ch[start] = ch[end]
-        ch[end] = temp
+        for(int i = 0; i < str.length(); i++) {
+            s = str.charAt(i) + s;
+        }
 
-        Increment start by 1
-        Decrement end by 1
+        return s;
+    }
 
-    Return String.copyValueOf(ch)
+    public void printReverseString(String s) {
 
-Main:
-    Initialize str as the input string
-    Call reverseString(str) and store the result in reversed
-    Print reversed*/
-    public String reverseString(String str) {
-        //i am using two pointers
         int start = 0;
-        int end = str.length()-1;
-        char[] ch = str.toCharArray();
-        while (start < end) {
+        int end = s.length() - 1;
+
+        char[] ch = s.toCharArray();
+
+        while(start < end) {
             char c = ch[start];
             ch[start] = ch[end];
             ch[end] = c;
+
             start++;
             end--;
         }
+
+        for(int i = 0; i < s.length(); i++) {
+            System.out.print(ch[i] + "");
+        }
+    }
+
+    public String reverseString(String s) {
+
+        int start = 0;
+        int end = s.length() - 1;
+
+        char[] ch = s.toCharArray();
+
+        while(start < end) {
+            char c = ch[start];
+            ch[start] = ch[end];
+            ch[end] = c;
+
+            start++;
+            end--;
+        }
+
         return String.copyValueOf(ch);
     }
-    public static void main(String [] args){
-        ReverseString rs = new ReverseString();
-        String reversed = rs.reverseString("albert");
-        System.out.println(reversed);
+
+    public void reverseStack(String str) {
+        Stack<Character> st = new Stack<>();
+
+        for(int i = 0; i < str.length(); i++) {
+            st.push(str.charAt(i));
+        }
+
+        while(!st.isEmpty()) {
+            System.out.print(st.pop());
+        }
+    }
+
+}
+
+public class StringApp {
+
+    public static void main(String[] args) {
+        ReverseString obj = new ReverseString();
+
+        String str = "coding";
+        StringBuilder sb = new StringBuilder(str);
+
+        sb = sb.reverse();
+        System.out.println(sb);
+
+        obj.printReverseString(str);
+        System.out.println();
+
+        System.out.println(obj.reverseString(str));
+
+        obj.reverseStack(str);
     }
 }
 //Tc: O(n)
